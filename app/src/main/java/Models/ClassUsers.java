@@ -6,10 +6,12 @@ package Models;
 
 public class ClassUsers {
 
-    private int id, phone;
-    private String name, email, nic, gender, dob, address, password, dateJoined, designation;
+    private int id;
+    private long phone;
+    private String name, email, nic, gender, DefaultPicture, dob, address, password, dateJoined, designation, picturePath;
+    private byte[] picture;
 
-    public ClassUsers(int id, int phone, String name, String email, String nic, String gender, String dob, String address, String password, String dateJoined, String designation) {
+    public ClassUsers(int id, long phone, String name, String email, String nic, String gender, String dob, String address, String password, String dateJoined, String designation, byte[] picture) {
         this.id = id;
         this.phone = phone;
         this.name = name;
@@ -21,6 +23,7 @@ public class ClassUsers {
         this.password = password;
         this.dateJoined = dateJoined;
         this.designation = designation;
+        this.picture = picture;
     }
 
     public ClassUsers() {
@@ -35,11 +38,11 @@ public class ClassUsers {
         this.id = id;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -113,5 +116,29 @@ public class ClassUsers {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+
+    public String getDefaultPicture() {
+        return DefaultPicture;
+    }
+
+    public void setDefaultPicture(String defaultPicture) {
+        DefaultPicture = defaultPicture;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

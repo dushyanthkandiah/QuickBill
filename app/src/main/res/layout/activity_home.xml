@@ -1,18 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dushyanth.quickbill.HomeActivity">
+    tools:context="com.example.dushyanth.quickbill.HomeActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorAccent"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblFragmentTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Quik Del"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/progressBar"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/progress"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/imgRequest"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:onClick="imgRequest"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:src="@drawable/request"
+                    android:visibility="visible"
+                    tools:ignore="OnClick" />
+
+                <ImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:tooltipText="dfsfsddf"
+                    android:clickable="true"
+                    android:onClick="imgProfile"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:src="@drawable/profile_picture_male"
+                    android:visibility="visible"
+                    tools:ignore="OnClick" />
+
+                <ImageView
+                    android:id="@+id/imgLogOut"
+                    android:onClick="imgLogOut"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:padding="10dp"
+                    android:src="@drawable/sign_out"
+                    android:visibility="visible"
+                    tools:ignore="OnClick" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+</LinearLayout>

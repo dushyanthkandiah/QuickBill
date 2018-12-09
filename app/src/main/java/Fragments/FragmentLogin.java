@@ -103,11 +103,11 @@ public class FragmentLogin extends Fragment {
     }
 
     private void checkDb(){
-        password = txtPassword.getText().toString();
-        username = txtEmailPhone.getText().toString().trim();
+        password = txtPassword.getText().toString().replace("'", "''");
+        username = txtEmailPhone.getText().toString().trim().replace("'", "''");
 
         if (usernameType.equals("phone")){
-            username = username.substring(username.length() - 9 ,username.length());
+            username = username.substring(username.length() - 9, username.length());
         }
 
         serverCustomer.checkLogin(this);
@@ -115,7 +115,7 @@ public class FragmentLogin extends Fragment {
     }
 
     public void GotoHome(){
-        ShowDialog.showToast(getActivity(), SessionData.userId + " - " + SessionData.userName);
+        ShowDialog.showToast(getActivity(),"Hello " + SessionData.userName);
         SharedPreferences myPrefs = getActivity().getSharedPreferences(SessionData.PREFS_LOGIN, 0);
         SharedPreferences.Editor editor = myPrefs.edit();
         editor.putString("userId", SessionData.userId);

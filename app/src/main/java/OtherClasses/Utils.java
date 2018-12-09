@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class Utils {
 
-    public static byte[] getImageBytes(Bitmap bitmap) {
+    public static byte[] getImageBytes(Bitmap bitmap, int quality) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, quality, stream);
         return stream.toByteArray();
     }
 

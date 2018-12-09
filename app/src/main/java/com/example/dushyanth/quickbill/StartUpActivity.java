@@ -26,22 +26,21 @@ public class StartUpActivity extends AppCompatActivity {
         SharedPreferences myPrefs = getSharedPreferences(SessionData.PREFS_LOGIN, 0);
 
         if (myPrefs.contains("userId")) {
-//            SessionData.userId = myPrefs.getString("userId", "0");
-//            SessionData.userName = myPrefs.getString("userName", "No Name");
-//
-//            startActivity(new Intent(this, HomeActivity.class));
-//            overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
-//            finish();
 
-        } else {
+            SessionData.userId = myPrefs.getString("userId", "0");
+            SessionData.userName = myPrefs.getString("userName", "No Name");
 
-        }
-        if (savedInstanceState == null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragmentLogin, "fragment");
-            ft.commit();
-        }
-
+            if (!SessionData.userId.equals("")){
+                startActivity(new Intent(this, HomeActivity.class));
+                overridePendingTransition(R.anim.animation_enter, R.anim.animation_leave);
+                finish();
+            }else {
+                if (savedInstanceState == null) {
+                    changeFragment("signin");
+                }
+            }
+        }else
+            changeFragment("signin");
     }
 
     public void changeFragment(String frag) {
