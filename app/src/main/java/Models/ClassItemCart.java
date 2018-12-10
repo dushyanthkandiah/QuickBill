@@ -1,15 +1,18 @@
 package Models;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ClassItemCart {
 
-    private int supId, billId;
+    private int prdId, billId;
     private double quantity, subTotal;
     private String itemName;
 
-    public ClassItemCart(int supId, double quantity, double subTotal, String itemName) {
+    public ClassItemCart(int prdId, double quantity, double subTotal, String itemName) {
 
-        this.supId = supId;
+        this.prdId = prdId;
         this.quantity = quantity;
         this.subTotal = subTotal;
         this.itemName = itemName;
@@ -19,12 +22,12 @@ public class ClassItemCart {
     }
 
 
-    public int getSupId() {
-        return supId;
+    public int getPrdId() {
+        return prdId;
     }
 
-    public void setSupId(int supId) {
-        this.supId = supId;
+    public void setPrdId(int prdId) {
+        this.prdId = prdId;
     }
 
     public double getQuantity() {
@@ -58,4 +61,20 @@ public class ClassItemCart {
     public void setBillId(int billId) {
         this.billId = billId;
     }
+
+    public JSONObject getJSONObject() {
+        JSONObject obj = new JSONObject();
+
+        try {
+            obj.put("itemName", itemName);
+            obj.put("prdId", prdId);
+            obj.put("quantity", quantity);
+            obj.put("subTotal", subTotal);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
 }

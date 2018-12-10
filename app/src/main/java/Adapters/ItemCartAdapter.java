@@ -44,6 +44,11 @@ public class ItemCartAdapter extends RecyclerView.Adapter<ItemCartAdapter.VHolde
         holder.lblItemName.setText(data.get(position).getItemName() + "");
         holder.lblItemQty.setText(data.get(position).getQuantity() + "");
         holder.lblItemSubTotal.setText(data.get(position).getSubTotal() + "");
+
+        if (position == data.size() - 1)
+            holder.divider.setVisibility(View.GONE);
+        else
+            holder.divider.setVisibility(View.VISIBLE);
     }
 
 
@@ -54,6 +59,7 @@ public class ItemCartAdapter extends RecyclerView.Adapter<ItemCartAdapter.VHolde
 
     public class VHolder extends RecyclerView.ViewHolder {
         TextView lblItemId, lblItemName, lblItemQty, lblItemSubTotal;
+        View divider;
 
         public VHolder(View itemView) {
             super(itemView);
@@ -61,6 +67,7 @@ public class ItemCartAdapter extends RecyclerView.Adapter<ItemCartAdapter.VHolde
             lblItemName = itemView.findViewById(R.id.lblItemName);
             lblItemQty = itemView.findViewById(R.id.lblItemQty);
             lblItemSubTotal = itemView.findViewById(R.id.lblItemSubTotal);
+            divider = itemView.findViewById(R.id.divider);
         }
     }
 

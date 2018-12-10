@@ -49,9 +49,9 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
 
         String type = "";
 
-        if (!data.get(position).getLitres().equals("0"))
+        if (data.get(position).getType().equals("det"))
             type = "Litres : " + data.get(position).getLitres();
-        else if (data.get(position).getPages() != 0)
+        else if (data.get(position).getType().equals("sta"))
             type = "Pages : " + data.get(position).getPages();
 
         holder.lblNoOfLitres.setText("" + type);
@@ -61,8 +61,15 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         else
             holder.divider.setVisibility(View.VISIBLE);
 
-    }
+        holder.cardClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSelectProduct.fragmentRequest.setProductData(data.get(position));
+                dialogSelectProduct.dismiss();
+            }
+        });
 
+    }
 
     @Override
     public int getItemCount() {
