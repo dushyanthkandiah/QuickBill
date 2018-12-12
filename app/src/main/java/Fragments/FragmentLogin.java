@@ -120,6 +120,7 @@ public class FragmentLogin extends Fragment {
         SharedPreferences.Editor editor = myPrefs.edit();
         editor.putString("userId", SessionData.userId);
         editor.putString("userName", SessionData.userName);
+        editor.putString("regDate", SessionData.userregisteredDate);
         editor.commit();
 
         startActivity(new Intent(startUpActivity, HomeActivity.class));

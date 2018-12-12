@@ -10,9 +10,12 @@ public class ClassRequestList {
     private ClassRequest classRequest;
     private Double qty, subTotal;
 
-    public ClassRequestList(Double qty, Double subTotal) {
+    public ClassRequestList(int reqId, int prdId, String prdName, Double qty, Double subTotal) {
         classProducts = new ClassProducts();
         classRequest = new ClassRequest();
+        classRequest.setReqId(reqId);
+        classProducts.setId(prdId);
+        classProducts.setName(prdName);
         this.qty = qty;
         this.subTotal = subTotal;
     }

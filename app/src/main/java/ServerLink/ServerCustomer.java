@@ -72,6 +72,7 @@ public class ServerCustomer {
                                 explrObject = jsonArray.getJSONObject(1);
                                 SessionData.userId = explrObject.get("user_id").toString();
                                 SessionData.userName = explrObject.get("name").toString();
+                                SessionData.userregisteredDate = explrObject.get("date_joined").toString();
 
                                 fragmentLogin.GotoHome();
                             }

@@ -8,15 +8,17 @@ public class ClassRequest {
 
     private int reqId, status;
     private ClassUsers classUsers;
-    private String reqDate;
+    private String reqDate, remarks;
     private Double total;
 
-    public ClassRequest(int reqId, int status, String reqDate, Double total) {
+    public ClassRequest(int reqId, int cusId, int status, String reqDate, String remarks, Double total) {
         classUsers = new ClassUsers();
         this.reqId = reqId;
         this.status = status;
         this.reqDate = reqDate;
         this.total = total;
+        this.remarks = remarks;
+        classUsers.setId(cusId);
     }
 
     public ClassRequest() {
@@ -61,5 +63,13 @@ public class ClassRequest {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

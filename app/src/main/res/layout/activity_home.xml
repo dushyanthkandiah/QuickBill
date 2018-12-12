@@ -49,7 +49,7 @@
                     android:clickable="true"
                     android:onClick="imgRequest"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:padding="10dp"
+                    android:padding="12dp"
                     android:src="@drawable/request"
                     android:visibility="visible"
                     tools:ignore="OnClick" />
@@ -62,20 +62,8 @@
                     android:clickable="true"
                     android:onClick="imgProfile"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:padding="10dp"
+                    android:padding="12dp"
                     android:src="@drawable/profile_picture_male"
-                    android:visibility="visible"
-                    tools:ignore="OnClick" />
-
-                <ImageView
-                    android:id="@+id/imgLogOut"
-                    android:onClick="imgLogOut"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:padding="10dp"
-                    android:src="@drawable/sign_out"
                     android:visibility="visible"
                     tools:ignore="OnClick" />
 

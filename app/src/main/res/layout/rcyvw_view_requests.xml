@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardClick"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblItemId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Id"
+                android:textColor="@color/colorPrimary"
+                tools:ignore="Suspicious0dp" />
+
+            <TextView
+                android:id="@+id/lblRequestDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Date/Time"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                tools:ignore="Suspicious0dp" />
+
+            <TextView
+                android:id="@+id/lblRequestTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Total"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                tools:ignore="Suspicious0dp" />
+
+            <TextView
+                android:id="@+id/lblStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:text="Status"
+                android:textColor="@color/colorPrimary"
+                tools:ignore="Suspicious0dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lblRemarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Remarks : Need this item asap" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorMuted" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

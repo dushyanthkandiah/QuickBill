@@ -29,6 +29,7 @@ public class StartUpActivity extends AppCompatActivity {
 
             SessionData.userId = myPrefs.getString("userId", "0");
             SessionData.userName = myPrefs.getString("userName", "No Name");
+            SessionData.userregisteredDate = myPrefs.getString("regDate", "28-11-2018");
 
             if (!SessionData.userId.equals("")){
                 startActivity(new Intent(this, HomeActivity.class));
