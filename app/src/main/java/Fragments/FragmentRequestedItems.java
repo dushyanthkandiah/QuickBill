@@ -22,6 +22,7 @@ import Adapters.RequestViewAdapter;
 import Adapters.RequestedItemViewAdapter;
 import Models.ClassRequest;
 import Models.ClassRequestList;
+import OtherClasses.SessionData;
 import ServerLink.ServerRequest;
 
 @SuppressLint({"ValidFragment", "NewApi"})
@@ -45,12 +46,13 @@ public class FragmentRequestedItems extends Fragment{
 
     public FragmentRequestedItems(FragmentViewRequests fragmentViewRequests) {
         this.fragmentViewRequests = fragmentViewRequests;
+
     }
 
-    public void setFragDetails(int requestId, String itemTotal){
-        lblRequestId.setText("Request ID : " + requestId);
-        lblRequestId.setText("Total : " + itemTotal);
-
+    public void setFragDetails(){
+        requestId = SessionData.classRequest.getReqId();
+        lblRequestId.setText("Request ID : " + SessionData.classRequest.getReqId());
+        lblTotal.setText("Total : " + SessionData.classRequest.getTotal());
     }
 
     @Override
@@ -95,7 +97,7 @@ public class FragmentRequestedItems extends Fragment{
 
             }
         });
-
+        setFragDetails();
         fetchData();
 
         return iView;
@@ -116,8 +118,6 @@ public class FragmentRequestedItems extends Fragment{
         requestedItemViewAdapter.notifyDataSetChanged();
         page += 1;
     }
-
-
 
 }
 

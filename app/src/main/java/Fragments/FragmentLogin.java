@@ -111,7 +111,6 @@ public class FragmentLogin extends Fragment {
         }
 
         serverCustomer.checkLogin(this);
-
     }
 
     public void GotoHome(){

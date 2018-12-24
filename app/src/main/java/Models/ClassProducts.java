@@ -5,18 +5,17 @@ package Models;
  */
 
 public class ClassProducts {
-    private int id, pages;
-    private String name, type;
-    private Double litres, quantity, price;
+    private int id;
+    private String name, type, details;
+    private Double quantity, price;
 
-    public ClassProducts(int id, int pages, String name, String type, Double litres, Double quantity, Double price) {
+    public ClassProducts(int id, String name, String type, String details, Double quantity, Double price) {
         this.id = id;
-        this.pages = pages;
         this.name = name;
         this.type = type;
-        this.litres = litres;
         this.quantity = quantity;
         this.price = price;
+        this.details = details;
     }
 
     public ClassProducts() {
@@ -29,14 +28,6 @@ public class ClassProducts {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPages() {
-        return pages;
-    }
-
-    public void setPages(int pages) {
-        this.pages = pages;
     }
 
     public String getName() {
@@ -55,14 +46,6 @@ public class ClassProducts {
         this.type = type;
     }
 
-    public Double getLitres() {
-        return litres;
-    }
-
-    public void setLitres(Double litres) {
-        this.litres = litres;
-    }
-
     public Double getQuantity() {
         return quantity;
     }
@@ -77,5 +60,13 @@ public class ClassProducts {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 }

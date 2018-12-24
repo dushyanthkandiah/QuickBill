@@ -1,6 +1,5 @@
 package Fragments;
 
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -43,7 +42,7 @@ public class FragmentViewRequests extends Fragment implements SwipeRefreshLayout
 
     public HomeActivity homeActivity;
     private View iView;
-    public String fromDate, toDate, status = "0";
+    public String fromDate, toDate, status = "";
     public ServerRequest serverRequest;
     public int check = 0, requestId = 0;
     public double total = 0.0;
@@ -61,6 +60,7 @@ public class FragmentViewRequests extends Fragment implements SwipeRefreshLayout
     public int page = 0;
     private SimpleDateFormat sdf;
     private Calendar fromCalendar, toCalendar;
+    public ClassRequest classRequest;
 
     public FragmentViewRequests(HomeActivity homeActivity) {
         this.homeActivity = homeActivity;
@@ -102,7 +102,9 @@ public class FragmentViewRequests extends Fragment implements SwipeRefreshLayout
         fromCalendar.set(Calendar.DAY_OF_MONTH, day);
 
         txtFromDate.setText(sdf.format(fromCalendar.getTime()));
+        toCalendar.add(Calendar.DATE, 1);
         txtToDate.setText(sdf.format(toCalendar.getTime()));
+
         fromDate = txtFromDate.getText().toString();
         toDate = txtToDate.getText().toString();
 
@@ -201,14 +203,16 @@ public class FragmentViewRequests extends Fragment implements SwipeRefreshLayout
         spinnerStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-                if (++check > 0) {
+
+                if (++check > 1) {
                     String selectedItemText = (String) parent.getItemAtPosition(position);
 
                     if (selectedItemText.equals("Pending"))
                         status = "0";
                     else if (selectedItemText.equals("Cleared"))
                         status = "1";
+                    else if (selectedItemText.equals("Cancelled"))
+                        status = "2";
                     else
                         status = "";
 
@@ -223,6 +227,7 @@ public class FragmentViewRequests extends Fragment implements SwipeRefreshLayout
 
             }
         });
+
 
         swp2Rfsh.setOnRefreshListener(this);
         swp2Rfsh.setColorSchemeResources(R.color.colorAccent, android.R.color.holo_blue_dark, android.R.color.holo_green_dark, android.R.color.holo_orange_dark);
@@ -259,15 +264,8 @@ public class FragmentViewRequests extends Fragment implements SwipeRefreshLayout
         page += 1;
     }
 
-    public void callRequestList(int requestId, Double total){
-        this.requestId = requestId;
-        this.total = total;
-        homeActivity.changeFragment("view_requested_item");
-    }
-
-
     private void loadStatusArray() {
-        String[] sortArray = new String[]{"All", "Pending", "Cleared"};
+        String[] sortArray = new String[]{"All", "Pending", "Cleared", "Cancelled"};
 
         final List<String> sortArrayList = new ArrayList<>(Arrays.asList(sortArray));
 

@@ -24,7 +24,7 @@ import OtherClasses.Validation;
 import ServerLink.ServerCustomer;
 
 @SuppressLint({"ValidFragment", "ResourceType"})
-public class FragmentSignUp extends Fragment {
+public class    FragmentSignUp extends Fragment {
 
     public StartUpActivity startUpActivity;
     private Button btnSignIn, btnSignUp;

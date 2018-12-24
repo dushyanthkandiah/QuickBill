@@ -83,8 +83,8 @@ public class FragmentProfile extends Fragment {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getActivity()).setTitle("Log Out Confirmation")
-                        .setMessage("Are you sure you want to Sign Out?")
+                new AlertDialog.Builder(getActivity()).setTitle("Account Deletion Confirmation")
+                        .setMessage("You won't be able to log in again, confirm?")
                         .setPositiveButton("YES",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {

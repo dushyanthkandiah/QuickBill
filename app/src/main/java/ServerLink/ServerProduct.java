@@ -63,13 +63,11 @@ public class ServerProduct {
 
                                     dialogSelectProduct.list.add(new ClassProducts(
                                             Integer.parseInt(explrObject.get("prd_id").toString()),
-                                            Integer.parseInt(explrObject.get("pages").toString()),
                                             explrObject.get("name").toString(),
                                             explrObject.get("type").toString(),
-                                            Double.parseDouble(explrObject.get("litres").toString()),
+                                            explrObject.get("details").toString(),
                                             Double.parseDouble(explrObject.get("quantity").toString()),
                                             Double.parseDouble(explrObject.get("price").toString())
-
                                     ));
                                 }
                                 dialogSelectProduct.PopulateList();

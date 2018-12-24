@@ -45,6 +45,7 @@
             <TextView
                 android:id="@+id/lblItemSubTotal"
                 android:layout_width="0dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:textColor="@color/colorPrimary"

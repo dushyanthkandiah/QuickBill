@@ -46,15 +46,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
         holder.lblName.setText("" + data.get(position).getName());
         holder.lblPrice.setText("" + data.get(position).getPrice());
         holder.lblType.setText("" + data.get(position).getType());
-
-        String type = "";
-
-        if (data.get(position).getType().equals("det"))
-            type = "Litres : " + data.get(position).getLitres();
-        else if (data.get(position).getType().equals("sta"))
-            type = "Pages : " + data.get(position).getPages();
-
-        holder.lblNoOfLitres.setText("" + type);
+        holder.lblDetails.setText("Details : " + data.get(position).getDetails());
 
         if (position == data.size() - 1)
             holder.divider.setVisibility(View.GONE);
@@ -77,7 +69,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
     }
 
     public class VHolder extends RecyclerView.ViewHolder {
-        TextView lblName, lblPrice, lblType, lblNoOfLitres;
+        TextView lblName, lblPrice, lblType, lblDetails;
         CardView cardClick;
         View divider;
 
@@ -86,7 +78,7 @@ public class ProductViewAdapter extends RecyclerView.Adapter<ProductViewAdapter.
             lblName = itemView.findViewById(R.id.lblName);
             lblPrice = itemView.findViewById(R.id.lblPrice);
             lblType = itemView.findViewById(R.id.lblType);
-            lblNoOfLitres = itemView.findViewById(R.id.lblNoOfLitres);
+            lblDetails = itemView.findViewById(R.id.lblDetails);
             cardClick = itemView.findViewById(R.id.cardClick);
             divider = itemView.findViewById(R.id.divider);
         }

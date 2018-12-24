@@ -57,7 +57,7 @@ public class DialogSelectProduct extends BaseDialogFragment<DialogSelectProduct.
     public int page = 0;
     private Boolean isScrolling = false;
     private int currentItems, totalItems, scrollOutItems, check = 0;
-    ServerProduct serverProduct = new ServerProduct();
+    private ServerProduct serverProduct = new ServerProduct();
 
     public static DialogSelectProduct newInstance(FragmentRequest fragmentRequest) {
         DialogSelectProduct dialogSelectProduct = new DialogSelectProduct(fragmentRequest);

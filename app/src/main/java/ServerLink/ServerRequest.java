@@ -1,7 +1,7 @@
 package ServerLink;
 
 import android.app.Activity;
-import android.view.View;
+import android.content.Context;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -17,16 +17,15 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import Dialogs.DialogSelectProduct;
 import Fragments.FragmentRequest;
 import Fragments.FragmentRequestedItems;
 import Fragments.FragmentViewRequests;
-import Models.ClassProducts;
 import Models.ClassRequest;
 import Models.ClassRequestList;
 import OtherClasses.OtherShortcuts;
 import OtherClasses.SessionData;
 import OtherClasses.ShowDialog;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by Dushyanth on 2018-12-09.
@@ -52,7 +51,7 @@ public class ServerRequest {
                         fragmentRequest.homeActivity.hideProgress();
                         try {
                             System.out.println(response + " *********");
-                                JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("response");
                             JSONObject explrObject = jsonArray.getJSONObject(0);
 
@@ -61,7 +60,13 @@ public class ServerRequest {
                             } else if (explrObject.get("queryResult").toString().equals("failed")) {
                                 ShowDialog.showToast(activity, "Connection not Available!");
                             } else if (explrObject.get("queryResult").toString().equals("success")) {
-                                ShowDialog.showToast(activity, "Your Request was successfully submitted");
+//                                ShowDialog.showToast(activity, "Your Request was successfully submitted");
+
+                                SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(fragmentRequest.homeActivity, SweetAlertDialog.SUCCESS_TYPE);
+                                sweetAlertDialog.setTitleText("Success");
+                                sweetAlertDialog.setContentText("Your Request was successfully submitted");
+                                sweetAlertDialog.show();
+
                                 fragmentRequest.CancelBill();
                                 OtherShortcuts.hideKeyboard(activity);
                             }
@@ -192,7 +197,7 @@ public class ServerRequest {
 
     }
 
-        public void getBilledItemData(final FragmentRequestedItems fragmentRequestedItems) {
+    public void getBilledItemData(final FragmentRequestedItems fragmentRequestedItems) {
         String requestName = "getBilledItemData";
         StringRequest stringRequest;
         final Activity activity = fragmentRequestedItems.getActivity();
@@ -249,8 +254,68 @@ public class ServerRequest {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("req_id", String.valueOf(fragmentRequestedItems.fragmentViewRequests.requestId));
+                params.put("req_id", String.valueOf(fragmentRequestedItems.requestId));
                 params.put("limit", String.valueOf(fragmentRequestedItems.page));
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag(requestName);
+
+        try {
+            MySingleton.getmInstance(activity).cancelRequest(requestName);
+        } catch (Exception e) {
+        }
+
+        MySingleton.getmInstance(activity).addToRequestQueue(stringRequest);
+
+    }
+
+    public void cancelRequest(final FragmentViewRequests fragmentViewRequests, final int reqId) {
+        final String requestName = "cancelRequest";
+        final Context activity = fragmentViewRequests.getActivity();
+        StringRequest stringRequest;
+        String url = SessionData.serverUrl + "billing.php?func=" + requestName;
+
+        fragmentViewRequests.homeActivity.showProgress();
+
+        stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        fragmentViewRequests.homeActivity.hideProgress();
+                        try {
+                            System.out.println(response + " "  + requestName);
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray jsonArray = jsonObject.getJSONArray("response");
+                            JSONObject explrObject = jsonArray.getJSONObject(0);
+
+                            if (explrObject.get("queryResult").toString().equals("error")) {
+                                ShowDialog.showToast(activity, "Error while Cancelling the Request");
+                            } else if (explrObject.get("queryResult").toString().equals("failed")) {
+                                ShowDialog.showToast(activity, "Connection not Available!");
+                            } else if (explrObject.get("queryResult").toString().equals("success")) {
+                                ShowDialog.showToast(activity, "Request Cancelled Successfully");
+                                fragmentViewRequests.onRefresh();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                fragmentViewRequests.homeActivity.hideProgress();
+                ShowDialog.showToast(activity, "Connection not Available");
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("req_id", String.valueOf(reqId));
 
                 return params;
             }

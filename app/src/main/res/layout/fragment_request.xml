@@ -30,6 +30,7 @@
                     android:padding="10dp">
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|center_vertical"
@@ -56,6 +57,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -168,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="5"
                     android:gravity="end"
+                    android:visibility="gone"
                     android:text="Total"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
@@ -211,9 +214,10 @@
         <TextView
             android:id="@+id/lblTotal"
             android:layout_width="0dp"
+            android:visibility="invisible"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_weight="7"
+            android:layout_weight="6"
             android:text="Total = Rs. 0.00"
             android:textColor="@color/colorAccent" />
 

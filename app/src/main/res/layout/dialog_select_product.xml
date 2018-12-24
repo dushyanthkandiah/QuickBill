@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
     app:cardCornerRadius="10dp"
     tools:style="@style/CardView">
 
@@ -26,7 +28,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:textColor="@color/colorPrimary"
-                android:text="Select a Supplement"
+                android:text="Select a Product"
                 android:textSize="18sp" />
 
             <pl.droidsonroids.gif.GifImageView
@@ -71,7 +73,6 @@
                 android:id="@+id/txtSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_weight="6"
                 android:background="@drawable/edittext_select"
                 android:hint="Search a Product"
@@ -104,7 +105,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:text="Type"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -115,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:layout_weight="5"
+                android:visibility="gone"
                 android:text="Price"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary" />
